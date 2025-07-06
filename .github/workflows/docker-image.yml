@@ -1,0 +1,24 @@
+name: Deploy to Server
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Подключение к серверу и обновление контейнера
+        uses: appleboy/ssh-action@v0.1.10
+        with:
+          host: ${{ secrets.SERVER_HOST }}       # IP или домен сервера
+          username: ${{ secrets.SERVER_USER }}   # пользователь сервера
+          key: ${{ secrets.SERVER_SSH_KEY }}     # приватный SSH ключ (секрет)
+          script: |
+            cd /server/CinemaTelegramBot          # путь к твоему проекту на сервере
+            git pull origin main                   # обновить код
+            docker-compose down                    # остановить контейнеры
+            docker-compose build                   # собрать новые образы
+            docker-compose up -d                   # запустить в фоне
