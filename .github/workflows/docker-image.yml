@@ -17,7 +17,7 @@ jobs:
           username: ${{ secrets.SERVER_USER }}   # пользователь сервера
           key: ${{ secrets.SERVER_SSH_KEY }}     # приватный SSH ключ (секрет)
           script: |
-            cd /server/CinemaTelegramBot          # путь к твоему проекту на сервере
+            cd /server/CinemaBotTelAviv/App         # путь к твоему проекту на сервере
             git pull origin main                   # обновить код
             docker-compose down                    # остановить контейнеры
             docker-compose build                   # собрать новые образы
