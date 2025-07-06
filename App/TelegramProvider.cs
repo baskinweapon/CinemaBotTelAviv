@@ -49,8 +49,10 @@ public class TelegramProvider {
     // Main Update handler
     async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken) {
         if (update.Message.MessageThreadId != null) {
+            Console.WriteLine("Message Thread ID: " + update.Message.MessageThreadId);
             await bot.SendMessage(update.Message.Chat.Id, update.Message.MessageThreadId.ToString());
         }
+        
         if (update.Type == UpdateType.PollAnswer) {
             var win = update.PollAnswer.OptionIds.Aggregate((i1, i2) => i1 > i2 ? i1 : i2);
             if (update.PollAnswer.OptionIds is not null) {
@@ -61,8 +63,6 @@ public class TelegramProvider {
 
         if (update.CallbackQuery is { } callbackQuery) 
             await CallbackQueryHandlerAsync(callbackQuery, cancellationToken);
-
-        await bot.SendMessage(update.Message.Chat.Id, update.Message.Text);
         
         new AnswerFacade().SendAnswer(update);
     }
