@@ -120,7 +120,7 @@ public class TelegramProvider {
 
             var me = await bot.GetMe(cancellationToken: cts.Token);
             
-            Console.WriteLine($"Start listening for @{me.Username}");
+            Console.WriteLine($"Connect to  @{me.Username}");
 
             // Keep running until canceled
             await Task.Delay(Timeout.Infinite, cts.Token);
