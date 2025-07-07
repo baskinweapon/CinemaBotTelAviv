@@ -69,10 +69,10 @@ public class AnswerFacade {
     }
     
     private async void SendToWeekMovies(Message message) {
-        if (!Mode.IsDev && DataBase.Instance.GetWeekCinemaUsers().Any(user => user.Id == message.From.Id)) {
-            await TelegramProvider.Instance.bot.SendMessage(message.Chat.Id, _warningMessage, messageThreadId: message.MessageThreadId, parseMode: ParseMode.Html);
-            return;
-        }
+        // if (!Mode.IsDev && DataBase.Instance.GetWeekCinemaUsers().Any(user => user.Id == message.From.Id)) {
+        //     await TelegramProvider.Instance.bot.SendMessage(message.Chat.Id, _warningMessage, messageThreadId: message.MessageThreadId, parseMode: ParseMode.Html);
+        //     return;
+        // }
         
         if (message.Text.Contains("/random")) {
             var movieName = await TMDBAPI.GetRandomMovies();
