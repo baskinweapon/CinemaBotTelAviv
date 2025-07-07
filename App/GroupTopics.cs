@@ -3,7 +3,10 @@ public enum TopicType {
     TeaCeremony,
     Review,
     NightChillChat,
-    WeekMovies
+    WeekMovies,
+    Announcement,
+    Chat,
+    SuggestMovie,
 }
 
 public class GroupTopics {
@@ -20,7 +23,10 @@ public class GroupTopics {
         {TopicType.TeaCeremony, 80},
         {TopicType.Review, 77},
         {TopicType.NightChillChat, 2},
-        {TopicType.WeekMovies, 6}
+        {TopicType.WeekMovies, 6},
+        {TopicType.Announcement, 41},
+        {TopicType.SuggestMovie, 16},
+        {TopicType.Chat, 20},
     };
     
     public TopicType GetTopicType(int id) {

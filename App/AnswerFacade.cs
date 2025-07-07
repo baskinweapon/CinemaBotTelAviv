@@ -49,8 +49,14 @@ public class AnswerFacade {
             switch (topicType) {
                 case TopicType.Review:
                     break;
-                case TopicType.WeekMovies:
+                case TopicType.SuggestMovie:
                     SendToWeekMovies(message);
+                    break;
+                case TopicType.WeekMovies:
+                    break;
+                case TopicType.Chat:
+                    break;
+                case TopicType.Announcement:
                     break;
                 case TopicType.EnglishCinema:
                     break;
