@@ -171,23 +171,10 @@ public class DataBase {
             serializer.Serialize(file, content);
         }
     }
-
-
-    // public void SetLastPollId(Poll updatePoll) {
-    //     content.lastPollId.Poll = updatePoll;
-    //     Save();
-    // }
-
+    
     private string GetSavesPath() {
-        // Относительный путь к файлу
-        string relativePath = "saves.json";
+        
+        string relativePath = "/tmp/saves.json";
         return relativePath;
-        // Относительный путь для подъема на 3 директории вверх и перехода в папку Saves
-        string relativeDir = Path.Combine("..", "..", "..");
-        
-        Console.WriteLine("Full path = " + Path.GetFullPath(relativeDir));
-        
-        // Комбинируем текущий каталог с относительным путем
-        return Path.Combine(Path.GetFullPath(relativeDir), relativePath);
     }
 }

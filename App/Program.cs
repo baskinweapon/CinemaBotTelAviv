@@ -10,7 +10,7 @@ public class Mode {
 class Aplication {
     
     // main loop
-    public static void Update() {
+    private static void Update() {
         var loop2Task = Task.Run(function: async () => {
             while (true) {
                 Console.WriteLine("Checking week cinema");
@@ -96,11 +96,13 @@ class Aplication {
     
     // main
     public static async Task Main(String[] args) {
-        // Mode.IsDev = true;
         Console.WriteLine("Starting application...");
         DataBase.Instance.Load();
+        
+        // main loop
         Update();
         
+        // telegram bot loop
         await TelegramProvider.Instance.Init();
     }
 }
