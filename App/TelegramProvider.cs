@@ -48,9 +48,13 @@ public class TelegramProvider {
 
     // Main Update handler
     async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, CancellationToken cancellationToken) {
-        if (update.Message.MessageThreadId != null) {
-            Console.WriteLine("Message Thread ID: " + update.Message.MessageThreadId);
-            await bot.SendMessage(update.Message.Chat.Id, update.Message.MessageThreadId.ToString());
+        if (update.Message.MessageThreadId == null) {
+            await bot.DeleteMessage(
+                update.Message.Chat.Id,
+                update.Message.MessageId,
+                cancellationToken: cancellationToken
+            );
+            return;
         }
         
         if (update.Type == UpdateType.PollAnswer) {
