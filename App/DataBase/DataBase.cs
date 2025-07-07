@@ -174,7 +174,10 @@ public class DataBase {
     
     private string GetSavesPath() {
         
-        string relativePath = "/tmp/saves.json";
-        return relativePath;
+        string saveDir = "/app/data";
+        Directory.CreateDirectory(saveDir); // на всякий случай
+        string savePath = Path.Combine(saveDir, "saves.json");
+        
+        return savePath;
     }
 }
