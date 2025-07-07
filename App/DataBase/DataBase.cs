@@ -19,7 +19,7 @@ public class Data {
     
     public Dictionary<long, List<int>> chatIDMessageIDDictionary = new();
     public Message? lastPollId;
-    public ChatId mainChatId;
+    public long mainChatId;
 }
 
 
@@ -74,7 +74,7 @@ public class DataBase {
     }
     
     public ChatId GetMainChatId() => content.mainChatId;
-    public void SetMainChatId(ChatId chatId) {
+    public void SetMainChatId(long chatId) {
         content.mainChatId = chatId;
         Save();
     }

@@ -4,7 +4,7 @@ using Telegram.Bot;
 using Telegram.Bot.Types;
 
 public class Mode {
-    public static bool IsDev { get; set; }
+    public static bool IsDev { get; set; } = false; // Set to true for development mode, false for production
 }
 
 class Aplication {
