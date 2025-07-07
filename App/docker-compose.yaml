@@ -4,6 +4,6 @@ services:
     container_name: cinemabot
     restart: always
     volumes:
-      - ./saves.json:/app/saves.json
+      - ./data:/app/data
     command: ./App
 
